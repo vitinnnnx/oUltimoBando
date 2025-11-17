@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crlgwmutfkry7"
-path="res://.godot/imported/arbustoOK.png-4b7aff4038d008d2734143db8def039f.ctex"
+uid="uid://bqrnlo4nsfhk4"
+path="res://.godot/imported/Gemini_Generated_Image_rxvc96rxvc96rxvc.png-e1e6432e17d4fcccb5196b03bf9d2732.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/arbustoOK.png"
-dest_files=["res://.godot/imported/arbustoOK.png-4b7aff4038d008d2734143db8def039f.ctex"]
+source_file="res://sprites/tilesets_fase1/fundo/Gemini_Generated_Image_rxvc96rxvc96rxvc.png"
+dest_files=["res://.godot/imported/Gemini_Generated_Image_rxvc96rxvc96rxvc.png-e1e6432e17d4fcccb5196b03bf9d2732.ctex"]
 
 [params]
 
