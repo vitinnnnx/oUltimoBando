@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxd3v5ef2kwbd"
-path="res://.godot/imported/cactoOK.png-97120935eb2c70bc4206ea515961d05b.ctex"
+uid="uid://cfrgpfuam4xxk"
+path="res://.godot/imported/Background.png-6a4d2556c0a0780ec117022c2c312eac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/cactoOK.png"
-dest_files=["res://.godot/imported/cactoOK.png-97120935eb2c70bc4206ea515961d05b.ctex"]
+source_file="res://sprites/tilesets_fase1/Background.png"
+dest_files=["res://.godot/imported/Background.png-6a4d2556c0a0780ec117022c2c312eac.ctex"]
 
 [params]
 

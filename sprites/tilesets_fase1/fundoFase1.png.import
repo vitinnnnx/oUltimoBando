@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfsxm8hxa7svf"
-path="res://.godot/imported/Objects.png-0ecda1f56548de77b2bd29e308a9bda3.ctex"
+uid="uid://d0o1o0mjadhry"
+path="res://.godot/imported/fundoFase1.png-ada966d1d84847054b08588862fb84cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/Objects.png"
-dest_files=["res://.godot/imported/Objects.png-0ecda1f56548de77b2bd29e308a9bda3.ctex"]
+source_file="res://sprites/tilesets_fase1/fundoFase1.png"
+dest_files=["res://.godot/imported/fundoFase1.png-ada966d1d84847054b08588862fb84cc.ctex"]
 
 [params]
 
