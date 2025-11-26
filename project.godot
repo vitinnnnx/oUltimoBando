@@ -50,3 +50,11 @@ jump={
 [layer_names]
 
 2d_physics/layer_1="terreno"
+2d_physics/layer_2="inimigos"
+2d_physics/layer_3="personagem"
+2d_physics/layer_4="decoracao"
+2d_physics/layer_5="passar de fase"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0

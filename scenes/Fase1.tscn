@@ -1137,6 +1137,8 @@ metadata/_edit_horizontal_guides_ = [-190.0]
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_6e84v")]
 z_index = 4
 position = Vector2(78, 247)
+aceleration = 750
+deceleration = 750
 
 [node name="tiles" type="Node2D" parent="."]
 texture_filter = 1
@@ -1188,6 +1190,8 @@ limit_bottom = 399
 
 [node name="LevelEnd" parent="." instance=ExtResource("11_bfo68")]
 position = Vector2(4321, 277)
+collision_layer = 16
+collision_mask = 4
 next_level = "Fase2"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
