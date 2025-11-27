@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=4 uid="uid://b71eupiylc5qm"]
+[gd_scene load_steps=20 format=4 uid="uid://b71eupiylc5qm"]
 
 [ext_resource type="PackedScene" uid="uid://3c8pkld5x2dv" path="res://personagens/player.tscn" id="1_6e84v"]
+[ext_resource type="PackedScene" uid="uid://c65wcikqqp1s5" path="res://personagens/police.tscn" id="1_ndch1"]
 [ext_resource type="Texture2D" uid="uid://qqptoeecr7h" path="res://sprites/tilesets_fase1/chaoNoBackground.png" id="2_4dvvg"]
 [ext_resource type="Texture2D" uid="uid://crlgwmutfkry7" path="res://sprites/tilesets_fase1/arbustoOK.png" id="3_4vge2"]
 [ext_resource type="Texture2D" uid="uid://bxd3v5ef2kwbd" path="res://sprites/tilesets_fase1/cactoOK.png" id="4_04qyp"]
@@ -1134,6 +1135,10 @@ sources/7 = SubResource("TileSetAtlasSource_3m5ht")
 metadata/_edit_vertical_guides_ = [3877.0, 4211.0]
 metadata/_edit_horizontal_guides_ = [-190.0]
 
+[node name="police" parent="." instance=ExtResource("1_ndch1")]
+z_index = 2
+position = Vector2(198, 210)
+
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_6e84v")]
 z_index = 4
 position = Vector2(78, 247)
@@ -1177,16 +1182,11 @@ centered = false
 
 [node name="Sprite2D2" type="Sprite2D" parent="Parallax2D"]
 z_index = 2
+texture_filter = 1
 position = Vector2(-5.9999995, 19)
 scale = Vector2(1.4328126, 1.2786459)
 texture = ExtResource("8_3m5ht")
 centered = false
-
-[node name="camera" parent="." instance=ExtResource("10_847xx")]
-limit_left = -34
-limit_top = -10000001
-limit_right = 4352
-limit_bottom = 399
 
 [node name="LevelEnd" parent="." instance=ExtResource("11_bfo68")]
 position = Vector2(4321, 277)
@@ -1196,5 +1196,11 @@ next_level = "Fase2"
 
 [node name="CollisionShape2D" parent="LevelEnd" index="0"]
 position = Vector2(-39, -274)
+
+[node name="camera" parent="." instance=ExtResource("10_847xx")]
+limit_left = -34
+limit_top = -10000001
+limit_right = 4352
+limit_bottom = 399
 
 [editable path="LevelEnd"]

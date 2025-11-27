@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://c65wcikqqp1s5"]
+
+[ext_resource type="Script" uid="uid://cft82fhkibufy" path="res://scripts/police.gd" id="1_xi7ss"]
+[ext_resource type="Texture2D" uid="uid://bmixv3duydqmt" path="res://sprites/policial/morrendo0.png" id="2_mbvim"]
+[ext_resource type="Texture2D" uid="uid://c73gnxhcxredq" path="res://sprites/policial/morrendo1.png" id="3_so141"]
+[ext_resource type="Texture2D" uid="uid://dkuiorcpl6jmx" path="res://sprites/policial/parado0.png" id="4_mtm4i"]
+[ext_resource type="Texture2D" uid="uid://dnwds75od0hrd" path="res://sprites/policial/parado1.png" id="5_nr5ky"]
+[ext_resource type="Texture2D" uid="uid://crd8ic75jme0p" path="res://sprites/policial/parado2.png" id="6_xs0i1"]
+[ext_resource type="Texture2D" uid="uid://bjfl6k7e6mlkr" path="res://sprites/policial/andando0.png" id="7_41oop"]
+[ext_resource type="Texture2D" uid="uid://tajwax1hkx7f" path="res://sprites/policial/andando1.png" id="8_jfa0e"]
+[ext_resource type="Texture2D" uid="uid://bpotoy18wx1wq" path="res://sprites/policial/andando3.png" id="9_0xptf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw87e"]
+radius = 27.0
+height = 88.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xi7ss"]
+animations = [{
+"frames": [{
+"duration": 3.91,
+"texture": ExtResource("2_mbvim")
+}, {
+"duration": 30.01,
+"texture": ExtResource("3_so141")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_mtm4i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nr5ky")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xs0i1")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_41oop")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jfa0e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0xptf")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xi7ss"]
+size = Vector2(54, 89)
+
+[node name="police" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_xi7ss")
+metadata/_edit_vertical_guides_ = [13.0, 54.0]
+metadata/_edit_horizontal_guides_ = [44.0, 89.0]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 5
+shape = SubResource("CapsuleShape2D_kw87e")
+debug_color = Color(0.99692196, 0, 0.18626031, 0.41960785)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.9073486e-06, 0)
+scale = Vector2(0.17359413, 0.16387802)
+sprite_frames = SubResource("SpriteFrames_xi7ss")
+animation = &"death"
+
+[node name="hitbox" type="Area2D" parent="."]
+z_index = 5
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("RectangleShape2D_xi7ss")
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(7, -8)
+target_position = Vector2(31, 0)
+
+[node name="GroundDetector" type="RayCast2D" parent="."]
+position = Vector2(33, 1)
+target_position = Vector2(0, 49)

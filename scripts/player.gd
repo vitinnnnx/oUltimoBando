@@ -5,10 +5,11 @@ enum PlayerState {
 	idle,
 	walk,
 	jump,
+	dead
 }
 
 @onready var anim: AnimatedSprite2D = $AnimatedSprite2D
-
+@onready var reload_timer: Timer = $ReloadTimer
 @export var max_speed = 300.0
 @export var aceleration = 100
 @export var deceleration = 100
@@ -42,8 +43,8 @@ func _physics_process(delta: float) -> void:
 			anim.play("walk")
 		PlayerState.jump:
 			jump_state(delta)
-			
-			
+		PlayerState.dead:
+			dead_state(delta)
 	move_and_slide()
 
 
@@ -56,6 +57,12 @@ func go_to_walk_state():
 func go_to_jump_state():
 	status = PlayerState.jump
 	velocity.y = JUMP_VELOCITY
+func go_to_dead_state():
+	status = PlayerState.dead
+	anim.play("dead")
+	reload_timer.start()
+	velocity = Vector2.ZERO
+	
 
 func idle_state(delta):
 	move(delta)
@@ -86,8 +93,10 @@ func walk_state(delta ):
 		go_to_jump_state()
 		return
 
-
-
+func dead_state(_delta):
+	pass
+	
+	
 
 func update_direction():
 	direction = Input.get_axis("left", "right")
@@ -97,3 +106,16 @@ func update_direction():
 	elif direction > 0:
 		anim.flip_h = false
 		
+
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	if velocity.y > 0:
+		area.get_parent().take_damage()
+		go_to_jump_state()
+	else:
+		if status != PlayerState.dead:
+			go_to_dead_state()
+
+
+func _on_reload_timer_timeout() -> void:
+	get_tree().reload_current_scene()

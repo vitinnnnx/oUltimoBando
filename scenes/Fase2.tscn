@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=4 uid="uid://ct45e02i8vxpu"]
+[gd_scene load_steps=17 format=4 uid="uid://ct45e02i8vxpu"]
 
 [ext_resource type="PackedScene" uid="uid://3c8pkld5x2dv" path="res://personagens/player.tscn" id="1_11856"]
+[ext_resource type="PackedScene" uid="uid://q1xrpuo6y70" path="res://personagens/bullet.tscn" id="1_oo7vo"]
 [ext_resource type="PackedScene" uid="uid://cv63ocdc66p6y" path="res://personagens/camera.tscn" id="1_u2eis"]
 [ext_resource type="Texture2D" uid="uid://cs58lwepvwxef" path="res://sprites/tilesets_fase2/GandalfHardcore city tiles 32x32.png" id="2_6hwom"]
 [ext_resource type="Texture2D" uid="uid://ca5fk26smkudh" path="res://sprites/tilesets_fase2/Decoration 32x32.png" id="3_o2g0a"]
@@ -950,11 +951,16 @@ sources/0 = SubResource("TileSetAtlasSource_5x7wd")
 [node name="Fase2" type="Node2D"]
 metadata/_edit_vertical_guides_ = [7718.0]
 
+[node name="bullet" parent="." instance=ExtResource("1_oo7vo")]
+z_index = 1
+position = Vector2(194, 141)
+
 [node name="camera" parent="." instance=ExtResource("1_u2eis")]
 position = Vector2(921.1909, -1.3959656)
 limit_right = 7720
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_11856")]
+deceleration = 750
 
 [node name="tiles" type="Node2D" parent="."]
 
@@ -968,6 +974,7 @@ tile_map_data = PackedByteArray("AAAVABMAAQANAAYAAAAVABQAAQANAAYAAAAVABUAAQANAAc
 tile_set = SubResource("TileSet_5x7wd")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 scroll_scale = Vector2(0, 0)
 scroll_offset = Vector2(-2, -61)
 
