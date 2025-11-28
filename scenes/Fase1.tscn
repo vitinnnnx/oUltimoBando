@@ -1137,12 +1137,11 @@ metadata/_edit_horizontal_guides_ = [-190.0]
 
 [node name="police" parent="." instance=ExtResource("1_ndch1")]
 z_index = 2
-position = Vector2(198, 210)
+position = Vector2(189, 291)
 
 [node name="CharacterBody2D" parent="." instance=ExtResource("1_6e84v")]
 z_index = 4
-position = Vector2(78, 247)
-aceleration = 750
+position = Vector2(603, 287)
 deceleration = 750
 
 [node name="tiles" type="Node2D" parent="."]
@@ -1161,6 +1160,7 @@ tile_map_data = PackedByteArray("AAAPABEABAAAAAEAAAAPABIABAAAAAIAAAAPABMABAAAAAM
 tile_set = SubResource("TileSet_hh0fu")
 
 [node name="Parallax2D" type="Parallax2D" parent="."]
+visible = false
 z_index = -1
 texture_filter = 1
 scroll_scale = Vector2(0.1, 0.1)

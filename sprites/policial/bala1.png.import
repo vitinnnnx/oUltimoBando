@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cj227gnndelox"
-path="res://.godot/imported/parado1.png-02301a8985ac5ceb5fe6a3e546da37e6.ctex"
+uid="uid://c3pdclhd872wl"
+path="res://.godot/imported/bala1.png-f540718f7e1ef70e8324940826f69512.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/policial/parado1.png"
-dest_files=["res://.godot/imported/parado1.png-02301a8985ac5ceb5fe6a3e546da37e6.ctex"]
+source_file="res://sprites/policial/bala1.png"
+dest_files=["res://.godot/imported/bala1.png-f540718f7e1ef70e8324940826f69512.ctex"]
 
 [params]
 

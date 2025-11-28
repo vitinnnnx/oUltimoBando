@@ -24,6 +24,8 @@ window/stretch/mode="canvas_items"
 [global_group]
 
 Player=""
+inimigos=""
+LethalArea=""
 
 [input]
 
@@ -54,6 +56,7 @@ jump={
 2d_physics/layer_3="personagem"
 2d_physics/layer_4="decoracao"
 2d_physics/layer_5="passar de fase"
+2d_physics/layer_6="lethal_area"
 
 [rendering]
 

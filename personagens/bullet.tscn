@@ -1,15 +1,47 @@
-[gd_scene load_steps=3 format=3 uid="uid://q1xrpuo6y70"]
+[gd_scene load_steps=6 format=3 uid="uid://q1xrpuo6y70"]
 
 [ext_resource type="Script" uid="uid://cid51x3je1586" path="res://area_2d.gd" id="1_cvin2"]
+[ext_resource type="Texture2D" uid="uid://c3pdclhd872wl" path="res://sprites/policial/bala1.png" id="2_37tao"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_37tao"]
-radius = 12.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_74ssd"]
+size = Vector2(6, 4)
 
-[node name="bullet" type="Area2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxuvf"]
+atlas = ExtResource("2_37tao")
+region = Rect2(136, 268, 136, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cvin2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxuvf")
+}],
+"loop": true,
+"name": &"bullet",
+"speed": 5.0
+}]
+
+[node name="bullet" type="Area2D" groups=["LethalArea"]]
+collision_layer = 32
+collision_mask = 5
 script = ExtResource("1_cvin2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_37tao")
+z_index = 4
+shape = SubResource("RectangleShape2D_74ssd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 4
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(0.10156251, 0.17583954)
+sprite_frames = SubResource("SpriteFrames_cvin2")
+animation = &"bullet"
+
+[node name="SelfDestructTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="SelfDestructTimer" to="." method="_on_self_destruct_timer_timeout"]

@@ -79,9 +79,9 @@ scale = Vector2(0.17121588, 0.15024231)
 sprite_frames = SubResource("SpriteFrames_x0210")
 animation = &"dead"
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." groups=["Player"]]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 34
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(-15, 1.5)

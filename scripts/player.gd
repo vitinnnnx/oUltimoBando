@@ -61,7 +61,7 @@ func go_to_dead_state():
 	status = PlayerState.dead
 	anim.play("dead")
 	reload_timer.start()
-	velocity = Vector2.ZERO
+	velocity.x = 0
 	
 
 func idle_state(delta):
@@ -109,13 +109,21 @@ func update_direction():
 
 
 func _on_hitbox_area_entered(area: Area2D) -> void:
+	if area.is_in_group("inimigos"):
+		hit_enemy(area)
+	elif area.is_in_group("LethalArea"):
+		hit_lethal_area()
+
+func hit_enemy(area: Area2D):
 	if velocity.y > 0:
 		area.get_parent().take_damage()
 		go_to_jump_state()
 	else:
 		if status != PlayerState.dead:
 			go_to_dead_state()
-
+	
+func hit_lethal_area():
+	go_to_dead_state()
 
 func _on_reload_timer_timeout() -> void:
 	get_tree().reload_current_scene()

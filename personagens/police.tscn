@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://c65wcikqqp1s5"]
+[gd_scene load_steps=15 format=3 uid="uid://c65wcikqqp1s5"]
 
 [ext_resource type="Script" uid="uid://cft82fhkibufy" path="res://scripts/police.gd" id="1_xi7ss"]
-[ext_resource type="Texture2D" uid="uid://bmixv3duydqmt" path="res://sprites/policial/morrendo0.png" id="2_mbvim"]
-[ext_resource type="Texture2D" uid="uid://c73gnxhcxredq" path="res://sprites/policial/morrendo1.png" id="3_so141"]
-[ext_resource type="Texture2D" uid="uid://dkuiorcpl6jmx" path="res://sprites/policial/parado0.png" id="4_mtm4i"]
-[ext_resource type="Texture2D" uid="uid://dnwds75od0hrd" path="res://sprites/policial/parado1.png" id="5_nr5ky"]
-[ext_resource type="Texture2D" uid="uid://crd8ic75jme0p" path="res://sprites/policial/parado2.png" id="6_xs0i1"]
-[ext_resource type="Texture2D" uid="uid://bjfl6k7e6mlkr" path="res://sprites/policial/andando0.png" id="7_41oop"]
-[ext_resource type="Texture2D" uid="uid://tajwax1hkx7f" path="res://sprites/policial/andando1.png" id="8_jfa0e"]
-[ext_resource type="Texture2D" uid="uid://bpotoy18wx1wq" path="res://sprites/policial/andando3.png" id="9_0xptf"]
+[ext_resource type="Texture2D" uid="uid://1w1rktlfbqc3" path="res://sprites/policial/morrendo0.png" id="2_mbvim"]
+[ext_resource type="Texture2D" uid="uid://cgo5vwtjo23h8" path="res://sprites/policial/atacando0.png" id="2_mtm4i"]
+[ext_resource type="Texture2D" uid="uid://c08arvikrf4tt" path="res://sprites/policial/atacando1.png" id="3_nr5ky"]
+[ext_resource type="Texture2D" uid="uid://drqpldegfaxhe" path="res://sprites/policial/morrendo1.png" id="3_so141"]
+[ext_resource type="Texture2D" uid="uid://b8wu3vjk6h3oy" path="res://sprites/policial/parado0.png" id="4_mtm4i"]
+[ext_resource type="Texture2D" uid="uid://cj227gnndelox" path="res://sprites/policial/parado1.png" id="5_nr5ky"]
+[ext_resource type="Texture2D" uid="uid://f5fwocoq1dg7" path="res://sprites/policial/parado2.png" id="6_xs0i1"]
+[ext_resource type="Texture2D" uid="uid://diwlkru2fmtnt" path="res://sprites/policial/andando0.png" id="7_41oop"]
+[ext_resource type="Texture2D" uid="uid://dunso1174uu26" path="res://sprites/policial/andando1.png" id="8_jfa0e"]
+[ext_resource type="Texture2D" uid="uid://dni3mlp750p63" path="res://sprites/policial/andando3.png" id="9_0xptf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kw87e"]
 radius = 27.0
@@ -17,10 +19,21 @@ height = 88.0
 [sub_resource type="SpriteFrames" id="SpriteFrames_xi7ss"]
 animations = [{
 "frames": [{
-"duration": 3.91,
+"duration": 1.81,
+"texture": ExtResource("2_mtm4i")
+}, {
+"duration": 1.81,
+"texture": ExtResource("3_nr5ky")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("2_mbvim")
 }, {
-"duration": 30.01,
+"duration": 1.0,
 "texture": ExtResource("3_so141")
 }],
 "loop": false,
@@ -74,9 +87,9 @@ debug_color = Color(0.99692196, 0, 0.18626031, 0.41960785)
 position = Vector2(1.9073486e-06, 0)
 scale = Vector2(0.17359413, 0.16387802)
 sprite_frames = SubResource("SpriteFrames_xi7ss")
-animation = &"death"
+animation = &"attack"
 
-[node name="hitbox" type="Area2D" parent="."]
+[node name="hitbox" type="Area2D" parent="." groups=["inimigos"]]
 z_index = 5
 collision_layer = 2
 collision_mask = 4
@@ -91,3 +104,13 @@ target_position = Vector2(31, 0)
 [node name="GroundDetector" type="RayCast2D" parent="."]
 position = Vector2(33, 1)
 target_position = Vector2(0, 49)
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+position = Vector2(9, 0)
+target_position = Vector2(178, 0)
+collision_mask = 4
+
+[node name="BulletStartPosition" type="Node2D" parent="." groups=["inimigos"]]
+position = Vector2(34, -13)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
